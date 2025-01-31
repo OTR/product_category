@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+    <!-- Стили -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+        </marker>
+    </defs>
+
+    <!-- Category -->
+    <rect x="50" y="50" width="220" height="140" fill="white" stroke="black"/>
+    <rect x="50" y="50" width="220" height="30" fill="#e6e6e6" stroke="black"/>
+    <text x="120" y="70" font-family="Arial" font-weight="bold">Category</text>
+    <line x1="50" y1="80" x2="270" y2="80" stroke="black"/>
+    <text x="60" y="100" font-family="Arial">+ category_id: SERIAL PK</text>
+    <text x="60" y="120" font-family="Arial">+ category_name: VARCHAR(255) UNIQUE</text>
+    <text x="60" y="140" font-family="Arial">+ parent_category_id: INTEGER FK</text>
+    <text x="60" y="160" font-family="Arial" font-size="12">idx_category_parent_category</text>
+
+    <!-- Product -->
+    <rect x="400" y="50" width="220" height="160" fill="white" stroke="black"/>
+    <rect x="400" y="50" width="220" height="30" fill="#e6e6e6" stroke="black"/>
+    <text x="470" y="70" font-family="Arial" font-weight="bold">Product</text>
+    <line x1="400" y1="80" x2="620" y2="80" stroke="black"/>
+    <text x="410" y="100" font-family="Arial">+ product_id: SERIAL PK</text>
+    <text x="410" y="120" font-family="Arial">+ product_name: VARCHAR(255) UNIQUE</text>
+    <text x="410" y="140" font-family="Arial">+ base_price: INTEGER ≥ 0</text>
+    <text x="410" y="160" font-family="Arial">+ currency: CHAR(4)</text>
+    <text x="410" y="180" font-family="Arial">+ category_id: INTEGER FK</text>
+    <text x="410" y="200" font-family="Arial" font-size="12">idx_product_category</text>
+
+    <!-- Product Group -->
+    <rect x="400" y="300" width="220" height="100" fill="white" stroke="black"/>
+    <rect x="400" y="300" width="220" height="30" fill="#e6e6e6" stroke="black"/>
+    <text x="460" y="320" font-family="Arial" font-weight="bold">Product Group</text>
+    <line x1="400" y1="330" x2="620" y2="330" stroke="black"/>
+    <text x="410" y="350" font-family="Arial">+ group_id: SERIAL PK</text>
+    <text x="410" y="370" font-family="Arial">+ group_name: VARCHAR(255) UNIQUE</text>
+
+    <!-- Product To Product Group -->
+    <rect x="50" y="300" width="220" height="140" fill="white" stroke="black"/>
+    <rect x="50" y="300" width="220" height="30" fill="#e6e6e6" stroke="black"/>
+    <text x="70" y="320" font-family="Arial" font-weight="bold">Product To Product Group</text>
+    <line x1="50" y1="330" x2="270" y2="330" stroke="black"/>
+    <text x="60" y="350" font-family="Arial">+ relationship_id: SERIAL PK</text>
+    <text x="60" y="370" font-family="Arial">+ product_id: INTEGER FK</text>
+    <text x="60" y="390" font-family="Arial">+ group_id: INTEGER FK</text>
+    <text x="60" y="410" font-family="Arial" font-size="12">idx_product_group_lookup</text>
+    <text x="60" y="430" font-family="Arial" font-size="12">unique(product_id, group_id)</text>
+
+    <!-- Relationships -->
+    <!-- Self-reference on Category -->
+    <path d="M270,120 C310,120 310,60 270,60" stroke="black" fill="none" marker-end="url(#arrow)"/>
+    <text x="280" y="100" font-family="Arial" font-size="12">parent</text>
+
+    <!-- Category to Product -->
+    <line x1="270" y1="140" x2="400" y2="140" stroke="black" marker-end="url(#arrow)"/>
+    <text x="310" y="130" font-family="Arial" font-size="12">1:N</text>
+
+    <!-- Product to Product_To_Product_Group -->
+    <line x1="400" y1="180" x2="270" y2="320" stroke="black" marker-end="url(#arrow)"/>
+    <text x="310" y="250" font-family="Arial" font-size="12">1:N</text>
+
+    <!-- Product_Group to Product_To_Product_Group -->
+    <line x1="400" y1="350" x2="270" y2="350" stroke="black" marker-end="url(#arrow)"/>
+    <text x="310" y="340" font-family="Arial" font-size="12">1:N</text>
+</svg>

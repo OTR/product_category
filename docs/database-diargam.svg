@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Стили -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Category Table -->
+    <rect x="50" y="50" width="220" height="140" fill="#e8f4f8" stroke="#666" stroke-width="2"/>
+    <rect x="50" y="50" width="220" height="30" fill="#4a9eba" stroke="#666" stroke-width="2"/>
+    <text x="160" y="70" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">category</text>
+    
+    <text x="60" y="100" font-family="Arial" font-size="12">PK category_id SERIAL</text>
+    <text x="60" y="120" font-family="Arial" font-size="12">category_name VARCHAR(255) UNIQUE</text>
+    <text x="60" y="140" font-family="Arial" font-size="12">FK parent_category_id INTEGER</text>
+    <text x="60" y="160" font-family="Arial" font-size="12" font-style="italic">idx_category_parent_category</text>
+
+    <!-- Product Table -->
+    <rect x="450" y="50" width="220" height="160" fill="#e8f4f8" stroke="#666" stroke-width="2"/>
+    <rect x="450" y="50" width="220" height="30" fill="#4a9eba" stroke="#666" stroke-width="2"/>
+    <text x="560" y="70" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">product</text>
+    
+    <text x="460" y="100" font-family="Arial" font-size="12">PK product_id SERIAL</text>
+    <text x="460" y="120" font-family="Arial" font-size="12">product_name VARCHAR(255) UNIQUE</text>
+    <text x="460" y="140" font-family="Arial" font-size="12">base_price INTEGER</text>
+    <text x="460" y="160" font-family="Arial" font-size="12">currency CHAR(4)</text>
+    <text x="460" y="180" font-family="Arial" font-size="12">FK category_id INTEGER</text>
+
+    <!-- Product Group Table -->
+    <rect x="450" y="350" width="220" height="100" fill="#e8f4f8" stroke="#666" stroke-width="2"/>
+    <rect x="450" y="350" width="220" height="30" fill="#4a9eba" stroke="#666" stroke-width="2"/>
+    <text x="560" y="370" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">product_group</text>
+    
+    <text x="460" y="400" font-family="Arial" font-size="12">PK group_id SERIAL</text>
+    <text x="460" y="420" font-family="Arial" font-size="12">group_name VARCHAR(255) UNIQUE</text>
+
+    <!-- Product to Product Group Table -->
+    <rect x="50" y="350" width="220" height="120" fill="#e8f4f8" stroke="#666" stroke-width="2"/>
+    <rect x="50" y="350" width="220" height="30" fill="#4a9eba" stroke="#666" stroke-width="2"/>
+    <text x="160" y="370" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">product_to_product_group</text>
+    
+    <text x="60" y="400" font-family="Arial" font-size="12">PK relationship_id SERIAL</text>
+    <text x="60" y="420" font-family="Arial" font-size="12">FK product_id INTEGER</text>
+    <text x="60" y="440" font-family="Arial" font-size="12">FK group_id INTEGER</text>
+
+    <!-- Relationships -->
+    <!-- Self-reference for category -->
+    <path d="M50,100 C10,100 10,180 50,180" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Category to Product -->
+    <path d="M270,120 H450" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Product to Junction -->
+    <path d="M560,210 V410 H270" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Product Group to Junction -->
+    <path d="M450,400 H270" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Cardinality Labels -->
+    <text x="35" y="95" font-family="Arial" font-size="12">1</text>
+    <text x="35" y="175" font-family="Arial" font-size="12">0..1</text>
+    
+    <text x="280" y="115" font-family="Arial" font-size="12">1</text>
+    <text x="430" y="115" font-family="Arial" font-size="12">0..*</text>
+    
+    <text x="280" y="395" font-family="Arial" font-size="12">0..*</text>
+    <text x="430" y="395" font-family="Arial" font-size="12">0..*</text>
+</svg>

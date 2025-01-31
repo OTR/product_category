@@ -1,4 +1,4 @@
-# Create `category` table
+# Создать таблицу `category`
 
 ```sql
 CREATE TABLE category (
@@ -13,7 +13,7 @@ CREATE TABLE category (
 CREATE INDEX idx_category_parent_category ON category (parent_category_id);
 ```
 
-# Create `product` table
+# Создать таблицу `product`
 
 ```sql
 CREATE TABLE product (
@@ -28,7 +28,7 @@ CREATE TABLE product (
 CREATE INDEX idx_product_category ON product (category_id);
 ```
 
-# Create `product_group` table
+# Создать таблицу `product_group`
 
 ```sql
 CREATE TABLE product_group (
